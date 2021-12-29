@@ -18,7 +18,43 @@
  */
 class Person {
   // continue the code here
+  constructor(firstName, lastName, gender, birthYear) {
+    (this.firstName = firstName),
+      (this.lastName = lastName),
+      (this.gender = gender),
+      (this.birthYear = birthYear),
+      (this.interests = []);
+  }
+  printName = () => {
+    console.log(
+      `the first Name: ${this.firstName} and last Name ${this.lastName}`
+    );
+  };
+  calculateAge = (currentYear) => {
+    return currentYear - this.birthYear;
+  };
+  addInterest = (newInterest) => {
+    return this.interests.push(newInterest);
+  };
 }
+const p1 = new Person("Jaber", "Ali", "Male", 1995);
+p1.printName();
+p1.calculateAge(2021);
+p1.addInterest("singing");
+p1.addInterest("running");
+console.log(p1);
+const p2 = new Person("Zainb", "Ali", "Female", 1999);
+p2.printName();
+p2.calculateAge(2021);
+p2.addInterest("Swimming");
+p2.addInterest("Cross Fit");
+console.log(p2);
+const p3 = new Person("Ahmad", "Mosa", "Male", 1990);
+p3.printName();
+p3.calculateAge(2021);
+p3.addInterest("playing Piano");
+p3.addInterest("Workout");
+console.log(p3);
 
 /** (Question 2): (15000 Points)
  * 1. Write a class `Movie`, give it the following properties
@@ -43,8 +79,27 @@ class Person {
 
 class Movie {
   // continue the code here
+  constructor(title, duration, genre, rating) {
+    (this.title = title),
+      (this.duration = duration),
+      (this.genre = genre),
+      (this.rating = rating);
+  }
+  rate = (rating) => {
+    if (Array.isArray(this.rating)) {
+      return this.rating.push(rating);
+    } else {
+      return null;
+    }
+  };
+  averageRating = () => {
+    return this.rating.reduce((a, b) => a + b) / this.rate.length;
+  };
 }
 
+const m1 = new Movie("Inside Out", 175, "ne", [9, 10, 4, 5]);
+console.log(m1);
+console.log(m1.averageRating());
 /** (Question 3): (1000 Points)
  * 1. Create a class `Actor` that inherits `Person`, and adds the following properties
  * - movies: array of `Movie`
@@ -55,3 +110,9 @@ class Movie {
  */
 
 // write the class here
+class Actor extends Person {
+  movies = [];
+  addMovie = (movie) => {
+    return this.movies.push(movie);
+  };
+}
